@@ -44,15 +44,18 @@ let mapleader = ','
 
 " If the current buffer has never been saved, it will have no name,
 " " call the file browser to save it, otherwise just save it.
-command -nargs=0 -bar Update if &modified 
-                           \|    if empty(bufname('%'))
-                           \|        browse confirm write
-                           \|    else
-                           \|        confirm write
-                           \|    endif
-                           \|endif
-nnoremap <silent> <C-S> :<C-u>Update<CR>
-inoremap <silent> <C-S> <ESC>:<C-u>Update<CR>
+if !exists(":UpdateSaveFile")
+    command -nargs=0 -bar UpdateSaveFile if &modified
+                               \|    if empty(bufname('%'))
+                               \|        browse confirm write
+                               \|    else
+                               \|        confirm write
+                               \|    endif
+                               \|endif
+endif
+
+nnoremap <silent> <C-S> :<C-u>UpdateSaveFile<CR>
+inoremap <silent> <C-S> <ESC>:<C-u>UpdateSaveFile<CR>
 
 "Make j/k/h/l behave sanely!
 noremap j jzz
@@ -67,6 +70,30 @@ noremap _ ddkkp
 "shortcut to uppercase word
 inoremap <c-u> <esc>viwwhUeli
 nnoremap <c-u> viwwhUel
+
+"Open up vimrc for modification
+nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
+nnoremap <leader>sv :source ~/.vim/vimrc<cr>
+
+"Change enter to insert newline
+nnoremap <S-Enter> O<Esc>
+nnoremap <CR> o<Esc>
+
+"H-L goto beginning/end of line
+nnoremap <S-h> 0
+nnoremap <S-l> $
+
+"Surround visually selected in quotes
+vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
+
+"Add new excap mapping from insert mode
+inoremap jk <esc>
+
+
+"Comment shortcut for C
+nnoremap <leader>/ I//<esc>
+inoremap <leader>/ <esc>I//<esc>
+vnoremap <leader>/ <esc>`<i/*<esc>`>la*/<esc>
 
 "
 " Pathogen (plugin manager) settings
@@ -106,6 +133,3 @@ let g:minimap_highlight='Visual'
 "bClose script settings
 "
 let bclose_multiple = 0
-
-
-
