@@ -61,7 +61,8 @@ map - ddp
 map _ ddkkp
 
 "shortcut to uppercase word
-imap <c-u> <esc>bveUi
+imap <c-u> <esc>viwwhUeli
+nmap <c-u> viwwhUel
 
 "
 " Pathogen (plugin manager) settings
