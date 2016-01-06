@@ -31,6 +31,8 @@ set mouse=a
 set colorcolumn=81
 "Enable a vim title
 set title
+"Dont be compatible with vi
+set nocompatible
 
 "
 " Key-mappings
@@ -48,6 +50,18 @@ command -nargs=0 -bar Update if &modified
 noremap <silent> <C-S> :<C-u>Update<CR>
 noremap! <silent> <C-S> <ESC>:<C-u>Update<CR>
 
+"Make j/k/h/l behave sanely!
+map j jzz
+map k kzz
+map h hzz
+map l lzz
+
+"Move single line up or down
+map - ddp
+map _ ddkkp
+
+"shortcut to uppercase word
+imap <c-u> <esc>bveUi
 
 "
 " Pathogen (plugin manager) settings
