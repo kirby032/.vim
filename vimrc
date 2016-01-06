@@ -51,8 +51,8 @@ command -nargs=0 -bar Update if &modified
                            \|        confirm write
                            \|    endif
                            \|endif
-nmap <silent> <C-S> :<C-u>Update<CR>
-imap <silent> <C-S> <ESC>:<C-u>Update<CR>
+nnoremap <silent> <C-S> :<C-u>Update<CR>
+inoremap <silent> <C-S> <ESC>:<C-u>Update<CR>
 
 "Make j/k/h/l behave sanely!
 noremap j jzz
