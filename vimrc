@@ -24,7 +24,7 @@ set list
 set tabstop=4
 set shiftwidth=4
 set expandtab
-map <leader>t <Esc>:set expandtab!<cr>
+noremap <leader>t <Esc>:set expandtab!<cr>
 "Use mouse controls
 set mouse=a
 "Set column width marker
@@ -33,6 +33,10 @@ set colorcolumn=81
 set title
 "Dont be compatible with vi
 set nocompatible
+"Sett buffers to be able to be hidden (don't have to save when switching)
+set hidden
+"Set leader key
+let mapleader = ','
 
 "
 " Key-mappings
@@ -47,22 +51,22 @@ command -nargs=0 -bar Update if &modified
                            \|        confirm write
                            \|    endif
                            \|endif
-noremap <silent> <C-S> :<C-u>Update<CR>
-noremap! <silent> <C-S> <ESC>:<C-u>Update<CR>
+nmap <silent> <C-S> :<C-u>Update<CR>
+imap <silent> <C-S> <ESC>:<C-u>Update<CR>
 
 "Make j/k/h/l behave sanely!
-map j jzz
-map k kzz
-map h hzz
-map l lzz
+noremap j jzz
+noremap k kzz
+noremap h hzz
+noremap l lzz
 
 "Move single line up or down
-map - ddp
-map _ ddkkp
+noremap - ddp
+noremap _ ddkkp
 
 "shortcut to uppercase word
-imap <c-u> <esc>viwwhUeli
-nmap <c-u> viwwhUel
+inoremap <c-u> <esc>viwwhUeli
+nnoremap <c-u> viwwhUel
 
 "
 " Pathogen (plugin manager) settings
@@ -86,7 +90,7 @@ noremap <silent> <C-z> :CtrlPTag<cr>
 "Silver-searcher (Ag) plugin settings
 "
 let g:ag_working_path_mode="r"
-map <leader>f <Esc>:Ag -S 
+noremap <leader>f <Esc>:Ag -S 
 
 "
 "vim-airline (tab and buffer viewer) settings
