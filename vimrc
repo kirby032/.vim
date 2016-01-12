@@ -117,7 +117,8 @@ noremap <silent> <C-z> :CtrlPTag<cr>
 "Silver-searcher (Ag) plugin settings
 "
 let g:ag_working_path_mode="r"
-noremap <leader>f <Esc>:Ag -S 
+nnoremap <leader>f <Esc>:Ag -S
+vnoremap <leader>f y<Esc>:Ag -S "<C-R>"" 
 
 "
 "vim-airline (tab and buffer viewer) settings
