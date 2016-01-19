@@ -1,4 +1,5 @@
 "Turn line numbers on
+"
 set number
 "Turn current cursor position in bottom corner on
 set ruler
@@ -37,6 +38,9 @@ set nocompatible
 set hidden
 "Set leader key
 let mapleader = ','
+"Show status line"
+set laststatus=2
+
 
 "
 " Key-mappings
@@ -95,6 +99,9 @@ nnoremap <leader>/ I//<esc>
 inoremap <leader>/ <esc>I//<esc>
 vnoremap <leader>/ <esc>`<i/*<esc>`>la*/<esc>
 
+"Paste-toggle"
+nnoremap <leader>p :set paste!<cr>
+
 "
 " Pathogen (plugin manager) settings
 "
@@ -123,6 +130,9 @@ vnoremap <leader>f y<Esc>:Ag -S "<C-R>""
 "
 "vim-airline (tab and buffer viewer) settings
 "
+let g:airline_theme = 'dark'
+let g:airline#extensions#tabline#fnamemod = ":t"
+let g:airline_section_c = '%<%Fm %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 let g:airline#extensions#tabline#enabled = 1
 
 "
