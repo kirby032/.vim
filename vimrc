@@ -18,9 +18,10 @@ syntax on
 set t_Co=256
 "set tags file to .tags
 set tags=.tags
-"show whitspaces
+"show whitespaces
 set listchars=tab:>—,trail:·
 set list
+match ErrorMsg '\s\+$'
 "Set 4 spaces to a TAB
 set tabstop=4
 set shiftwidth=4
