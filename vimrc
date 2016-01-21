@@ -41,6 +41,9 @@ set hidden
 let mapleader = ','
 "Show status line"
 set laststatus=2
+"Set bashlike file completion
+set wildmode=longest,list,full
+set wildmenu
 
 
 "
@@ -125,8 +128,8 @@ noremap <silent> <C-z> :CtrlPTag<cr>
 "Silver-searcher (Ag) plugin settings
 "
 let g:ag_working_path_mode="r"
-nnoremap <leader>f <Esc>:Ag -S
-vnoremap <leader>f y<Esc>:Ag -S "<C-R>"" 
+nnoremap <leader>f <Esc>:", "<C-R>P")<C-B>call Project_search("<C-R>Q
+vnoremap <leader>f y<Esc>:")<C-B>call Project_search("<C-R>"", "<C-P>
 
 "
 "vim-airline (tab and buffer viewer) settings
@@ -145,3 +148,17 @@ let g:minimap_highlight='Visual'
 "bClose script settings
 "
 let bclose_multiple = 0
+
+
+"
+" FUNCTIONS
+"
+
+function! Project_search(pattern, path)
+    echom "path: " a:path " pattern: " a:pattern
+    let @p = a:path
+    let @q = a:pattern
+    call ag#Ag('grep','-S ' . a:pattern . ' ' . a:path)
+endfunction
+
+
