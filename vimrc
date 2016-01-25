@@ -44,6 +44,10 @@ set laststatus=2
 "Set bashlike file completion
 set wildmode=longest,list,full
 set wildmenu
+"Use spellcheck for anything but C files
+set spell spelllang=en_us
+"Default to searching for highlighted word
+vnoremap / y<esc>/<C-R>"
 
 
 "
@@ -106,6 +110,23 @@ vnoremap <leader>/ <esc>`<i/*<esc>`>la*/<esc>
 "Paste-toggle"
 nnoremap <leader>p :set paste!<cr>
 
+"Toggle buffer"
+nnoremap <leader>n :bnext<cr>
+nnoremap <leader><S-P> :bprevious<cr>
+
+"Add copy/paste from clipboard
+nnoremap <leader>p "+p
+
+vnoremap <leader>p d"+p
+vnoremap <leader>c "+y
+
+"Autogroups
+
+augroup c_file_types
+    autocmd!
+    autocmd FileType C set nospell
+augroup END
+
 "
 " Pathogen (plugin manager) settings
 "
@@ -129,7 +150,7 @@ noremap <silent> <C-z> :CtrlPTag<cr>
 "
 let g:ag_working_path_mode="r"
 nnoremap <leader>f <Esc>:", "<C-R>P")<C-B>call Project_search("<C-R>Q
-vnoremap <leader>f y<Esc>:")<C-B>call Project_search("<C-R>"", "<C-P>
+vnoremap <leader>f y<Esc>:")<C-B>call Project_search("<C-R>"", "<C-R>P
 
 "
 "vim-airline (tab and buffer viewer) settings
