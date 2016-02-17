@@ -44,8 +44,6 @@ set laststatus=2
 "Set bashlike file completion
 set wildmode=longest,list,full
 set wildmenu
-"Use spellcheck for anything but C files
-set spell spelllang=en_us
 "Default to searching for highlighted word
 vnoremap / y<esc>/<C-R>"
 
@@ -70,10 +68,10 @@ nnoremap <silent> <C-S> :<C-u>UpdateSaveFile<CR>
 inoremap <silent> <C-S> <ESC>:<C-u>UpdateSaveFile<CR>
 
 "Make j/k/h/l behave sanely!
-noremap j jzz
-noremap k kzz
-noremap h hzz
-noremap l lzz
+"noremap j jzz
+"noremap k kzz
+"noremap h hzz
+"noremap l lzz
 
 "Move single line up or down
 noremap - ddp
@@ -120,12 +118,22 @@ nnoremap <leader>p "+p
 vnoremap <leader>p d"+p
 vnoremap <leader>c "+y
 
+"Add buffer movements
+nnoremap gn :bnext<cr>
+nnoremap gp :bprevious<cr>
+
 "Autogroups
 
 augroup c_file_types
     autocmd!
     autocmd FileType C set nospell
 augroup END
+
+augroup txt_file_types
+    autocmd!
+    autocmd FileType text set spell spelllang=en_us
+augroup END
+
 
 "
 " Pathogen (plugin manager) settings
