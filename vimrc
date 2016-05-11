@@ -46,6 +46,8 @@ set wildmode=longest,list,full
 set wildmenu
 "Default to searching for highlighted word
 vnoremap / y<esc>/<C-R>"
+"Allow search to wrap bottom of the file
+set wrapscan
 
 
 "
@@ -92,6 +94,8 @@ nnoremap <CR> o<Esc>
 "H-L goto beginning/end of line
 nnoremap <S-h> 0
 nnoremap <S-l> $
+vnoremap <S-h> 0
+vnoremap <S-l> $
 
 "Surround visually selected in quotes
 vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
