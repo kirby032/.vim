@@ -26,7 +26,7 @@ match ErrorMsg '\s\+$'
 set tabstop=4
 set shiftwidth=4
 set expandtab
-noremap <leader>t <Esc>:set expandtab!<cr>
+nnoremap <leader>t <Esc>:set expandtab!<cr>
 "Use mouse controls
 set mouse=a
 "Set column width marker
