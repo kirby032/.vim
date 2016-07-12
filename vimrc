@@ -158,6 +158,11 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 noremap <silent> <C-z> :CtrlPTag<cr>
 
 "
+"YCM disable compilation
+"
+let g:ycm_largfile=1
+
+"
 "Silver-searcher (Ag) plugin settings
 "
 let g:ag_working_path_mode="r"
