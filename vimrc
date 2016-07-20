@@ -19,7 +19,7 @@ set t_Co=256
 "set tags file to .tags
 set tags=.tags
 "show whitespaces
-set listchars=tab:>—,trail:·
+set listchars=tab:>-,trail:.
 set list
 match ErrorMsg '\s\+$'
 "Set 4 spaces to a TAB
