@@ -84,8 +84,8 @@ inoremap <c-u> <esc>viwwhUeli
 nnoremap <c-u> viwwhUel
 
 "Open up vimrc for modification
-nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
-nnoremap <leader>sv :source ~/.vim/vimrc<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "Change enter to insert newline
 nnoremap <S-Enter> O<Esc>
@@ -112,9 +112,11 @@ vnoremap <leader>/ <esc>`<i/*<esc>`>la*/<esc>
 "Paste-toggle"
 nnoremap <leader>p :set paste!<cr>
 
-"Toggle buffer"
+"toggle buffer"
 nnoremap <leader>n :bnext<cr>
 nnoremap <leader><S-P> :bprevious<cr>
+nnoremap gn :bnext<cr>
+nnoremap gp :bprevious<cr>
 
 "Add copy/paste from clipboard
 nnoremap <leader>p "+p
