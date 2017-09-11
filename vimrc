@@ -27,6 +27,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 nnoremap <leader>t <Esc>:set expandtab!<cr>
+"Move up and down faster"
+nnoremap <leader>j 50j
+nnoremap <leader>k 50k
 "Use mouse controls
 set mouse=a
 "Set column width marker
@@ -190,7 +193,7 @@ let g:minimap_highlight='Visual'
 "
 "bClose script settings
 "
-let bclose_multiple = 0
+let bclose_multiple = 1
 
 
 "
