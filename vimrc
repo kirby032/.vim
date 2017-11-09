@@ -33,7 +33,7 @@ nnoremap <leader>k 50k
 "Use mouse controls
 set mouse=a
 "Set column width marker
-set colorcolumn=81
+set colorcolumn=80
 "Enable a vim title
 set title
 "Dont be compatible with vi
@@ -54,6 +54,10 @@ set backspace=eol,start,indent
 vnoremap / y<esc>/<C-R>"
 "Allow search to wrap bottom of the file
 set wrapscan
+
+"For git and mercurial commits auto-wrap line at 72 chars"
+au FileType gitcommit set tw=80
+au FileType hgcommit set tw=80
 
 
 "
@@ -126,9 +130,9 @@ nnoremap gp :bprevious<cr>
 
 "Add copy/paste from clipboard
 nnoremap <leader>p "+p
-
 vnoremap <leader>p d"+p
 vnoremap <leader>c "+y
+vnoremap <leader>y "+ygvd
 
 "Add buffer movements
 nnoremap gn :bnext<cr>
@@ -206,6 +210,32 @@ function! Project_search(pattern, path)
     let @q = a:pattern
     call ag#Ag('grep','-S ' . a:pattern . ' ' . a:path)
 endfunction
+
+"
+" Shell commands open buffered window
+"
+function! s:RunShellCommand(cmdline)
+  echo a:cmdline
+  let expanded_cmdline = a:cmdline
+  for part in split(a:cmdline, ' ')
+     if part[0] =~ '\v[%#<]'
+        let expanded_part = fnameescape(expand(part))
+        let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+     endif
+  endfor
+  botright 10new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  call setline(1, 'You entered:    ' . a:cmdline)
+  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
+  call setline(3,substitute(getline(2),'.','=','g'))
+  silent execute '$read !'. expanded_cmdline
+  setlocal nomodifiable
+  1
+endfunction
+
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+command! -complete=file -nargs=* Hg call s:RunShellCommand('hg '.<q-args>)
+command! -complete=file -nargs=* Gulp call s:RunShellCommand('gulp '.<q-args>)
 
 
 
