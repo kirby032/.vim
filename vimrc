@@ -245,9 +245,10 @@ function! s:RunShellCommand(cmdline)
   1
 endfunction
 
-command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
-command! -complete=file -nargs=* Hg call s:RunShellCommand('hg '.<q-args>)
-command! -complete=file -nargs=* Gulp call s:RunShellCommand('gulp '.<q-args>)
+command! -complete=shellcmd -nargs=+ ShellSync call s:RunShellCommand(<q-args>)
+command! -complete=shellcmd -nargs=+ Shell :AsyncRun <args>
+command! -complete=file -nargs=* Hg :AsyncRun hg <args>
+command! -complete=file -nargs=* Gulp :AsyncRun gulp  <args>
 
 
 
