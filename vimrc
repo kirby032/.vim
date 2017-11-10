@@ -249,6 +249,7 @@ command! -complete=shellcmd -nargs=+ ShellSync call s:RunShellCommand(<q-args>)
 command! -complete=shellcmd -nargs=+ Shell :AsyncRun <args>
 command! -complete=file -nargs=* Hg :AsyncRun hg <args>
 command! -complete=file -nargs=* Gulp :AsyncRun gulp  <args>
+command! -complete=file -nargs=* Build :AsyncRun build <args>
 
 
 
@@ -313,5 +314,24 @@ hi def link qASSERTS Statement
 " backups are a little silly when you're using patches constantly
 set nobackup
 set noswapfile
+
+
+"  ___                        _
+" / _ \ _   _ _ __ ___  _   _| | ___
+"| | | | | | | '_ ` _ \| | | | |/ _ \
+"| |_| | |_| | | | | | | |_| | | (_) |
+" \__\_\\__,_|_| |_| |_|\__,_|_|\___/
+"                             _                 _
+" _ __ ___   __ _ _ __  _ __ (_)_ __   __ _ ___( )
+"| '_ ` _ \ / _` | '_ \| '_ \| | '_ \ / _` / __|/
+"| | | | | | (_| | |_) | |_) | | | | | (_| \__ \
+"|_| |_| |_|\__,_| .__/| .__/|_|_| |_|\__, |___/
+"                |_|   |_|            |___/
+" FIGLET: Qumulo mappings'
+"
+
+"Set F5 to run tests in the directory of the file in the current buffer
+nnoremap <F5> :AsyncRun ./check_run.py -b '%:.:h'<cr>
+
 
 " Qumulo Style end
