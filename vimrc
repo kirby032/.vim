@@ -50,6 +50,9 @@ set wildmenu
 "Set backspace to always allow
 set backspace=eol,start,indent
 
+"Disable bracketed-paste mode since it breaks terminator
+set t_BE=
+
 "Default to searching for highlighted word
 vnoremap / y<esc>/<C-R>"
 "Allow search to wrap bottom of the file
