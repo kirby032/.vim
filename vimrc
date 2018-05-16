@@ -1,5 +1,6 @@
+"Set leader key
+let mapleader = ','
 "Turn line numbers on
-"
 set number
 "Turn current cursor position in bottom corner on
 set ruler
@@ -40,8 +41,6 @@ set title
 set nocompatible
 "Sett buffers to be able to be hidden (don't have to save when switching)
 set hidden
-"Set leader key
-let mapleader = ','
 "Show status line"
 set laststatus=2
 "Set bashlike file completion
@@ -141,11 +140,18 @@ vnoremap <leader>y "+ygvd
 nnoremap gn :bnext<cr>
 nnoremap gp :bprevious<cr>
 
+"Add re-run last command
+nnoremap <leader>r :<Up><cr>
+vnoremap <leader>r <Esc>:<Up><cr>
+
 "Autogroups
 
-augroup c_file_types
+augroup code_file_types
     autocmd!
     autocmd FileType C set nospell
+    autocmd FileType python set nospell
+    autocmd FileType diff set nospell
+    autocmd FileType qf set nospell
 augroup END
 
 augroup txt_file_types
@@ -253,8 +259,8 @@ command! -complete=shellcmd -nargs=+ Shell :AsyncRun <args>
 command! -complete=file -nargs=* Hg :AsyncRun hg <args>
 command! -complete=file -nargs=* Gulp :AsyncRun gulp  <args>
 command! -complete=file -nargs=* Build :AsyncRun build <args>
-
-
+command! -complete=file -nargs=* CR :AsyncRun ./check_run.py <args>
+command! -complete=file -nargs=* Lint :AsyncRun lint/all <args>
 
 
 "
