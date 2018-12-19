@@ -18,7 +18,7 @@ syntax on
 "Set vim to use 256 color
 set t_Co=256
 "set tags file to .tags
-set tags=tags,.tags
+set tags=tags,.tags;/
 "show whitespaces
 set listchars=tab:>-,trail:.
 set list
@@ -143,6 +143,9 @@ nnoremap gp :bprevious<cr>
 "Add re-run last command
 nnoremap <leader>r :<Up><cr>
 vnoremap <leader>r <Esc>:<Up><cr>
+
+"Close all other buffers
+nnoremap <leader>d mA:%bd<cr><C-W>v<C-W>v'A
 
 "Autogroups
 
