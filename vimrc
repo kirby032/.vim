@@ -162,6 +162,11 @@ augroup txt_file_types
     autocmd FileType text set spell spelllang=en_us
 augroup END
 
+augroup resize_split_on_win_resize
+    autocmd!
+    autocmd VimResized * wincmd =
+augroup END
+
 
 "
 " Pathogen (plugin manager) settings
