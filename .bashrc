@@ -160,5 +160,9 @@ export LESS="-RFX"
 alias ls='ls --color=always'
 alias grep='grep --color=always'
 
+# Create an alarm for event
+alias create-alarm='~/my_tools/set-alarm.sh'
+alias show-alarms='ps aux | grep set-alarm | grep -v grep | tr -s " " | cut -d " " -f 13-'
+
 # Enable vi mode instead of emacs
 set -o vi
