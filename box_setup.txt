@@ -34,6 +34,7 @@
     - Backup default mappings
         xmodmap -pke > xmodmap.defaults
     - Put following config for Apple DasKeyboard in ~/.Xmodmap
+- Copy .gdbinit from last box
 ~~~
 ! swap keys {alt super}
 ! Actual Keyboard layout:
