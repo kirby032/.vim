@@ -147,6 +147,9 @@ vnoremap <leader>r <Esc>:<Up><cr>
 "Close all other buffers
 nnoremap <leader>d mA:%bd<cr><C-W>v<C-W>v'A
 
+" Open recent build failures
+nnoremap <leader>q :cfile build/log<cr>
+
 "Autogroups
 
 augroup code_file_types
