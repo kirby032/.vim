@@ -35,7 +35,7 @@ hi Comment ctermfg=242 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
 hi Conditional ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi Constant ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Define ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
-hi diffAdded ctermfg=119 ctermbg=NONE cterm=bold guifg=#87ff5f guibg=NONE gui=bold
+hi diffAdded ctermfg=119 ctermbg=NONE cterm=NONE guifg=#87ff5f guibg=NONE gui=bold
 hi diffRemoved ctermfg=196 ctermbg=NONE cterm=NONE guifg=#ff0000 guibg=NONE gui=NONE
 hi diffChanged ctermfg=88 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=#243955 gui=NONE
 hi diffFile ctermfg=231 ctermbg=24 cterm=bold guifg=#f8f8f2 guibg=#204a87 gui=bold
