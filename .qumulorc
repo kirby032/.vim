@@ -1,0 +1,10 @@
+{
+    "build_default_options": {
+        "ftp_cache_url":"ftp://gravytrain.eng.qumulo.com/submit/build_cache",
+        "ftp_cache_jobs":2,
+        "copying_cache_mode":"r",
+        "copying_cache_directory":"/mnt/gravytrain/submit/build_cache"
+    },
+    "build_progress":"only-bar",
+    "build_log_file":"build/log"
+}

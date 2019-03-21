@@ -28,6 +28,8 @@
     ln -s /home/mkirby/dotfiles/.bashrc /home/mkirby/.bashrc
     mv ~/.tmux.conf ~/.tmux.conf.orig
     ln -s /home/mkirby/dotfiles/.tmux.conf /home/mkirby/.tmux.conf
+    mv ~/.qumulorc ~/.qumulorc.orig
+    ln -s /home/mkirby/dotfiles/.qumulorc /home/mkirby/.qumulorc
 - Start ssh-agent automatically on login:
     - Copy old /usr/share/upstart/sessions/ssh-agent.conf
 - Maybe switch alt and super key (if super opens activities pane you're fine)
