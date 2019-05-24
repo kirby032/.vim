@@ -36,26 +36,20 @@
     - Backup default mappings
         xmodmap -pke > xmodmap.defaults
     - Put following config for Apple DasKeyboard in ~/.Xmodmap
-- Copy .gdbinit from last box
 ~~~
-! swap keys {alt super}
-! Actual Keyboard layout:
-! keycode 64 = Super_L
-! keycode 108 = Cmd_R, Super_R
-! keycode 133 = Alt_L
-! keycode 134 = Alt_R
-! 0xcd = 205
-! 0xcd = 207
-clear mod4
-clear mod1
-keycode 64 = Super_L NoSymbol Super_L
-keycode 108 = Super_R NoSymbol Super_R
-keycode 133 = Alt_L Meta_L Alt_L Meta_L
-keycode 134 = Alt_R Meta_R Alt_R Meta_R
-add mod1 = Alt_L Alt_R Meta_L
-add mod4 = Super_L Super_R Super_L Hyper_L
+keycode 64 = Super_L
+keycode 133 = Alt_L
+keycode 108 = Super_R
+keycode 134 = Alt_R
+
+clear Mod1
+clear Mod4
+
+add Mod1 = Alt_L Alt_R
+add Mod4 = Super_L Super_R
 ~~~
     - echo "/usr/bin/xmodmap /home/mkirby/.Xmodmap" > ~/.xinitrc
+- Copy .gdbinit from last box
 - Disable "Switch applications" in "Settings->Devices->Keyboard"
 - Enable "Switch Windows" to be Alt+Tab in "Settings->Devices->Keyboard"
 - Create hostname record in sauron
@@ -69,6 +63,8 @@ add mod4 = Super_L Super_R Super_L Hyper_L
     sudo apt-get install nfs-common
     sudo apt-get install nfs-kernel-server
 - Install Slack
+- Install cifs
+    sudo apt-get install cifs-utils
 
 //   ___                        _         ____                  _  __ _
 //  / _ \ _   _ _ __ ___  _   _| | ___   / ___| _ __   ___  ___(_)/ _(_) ___
