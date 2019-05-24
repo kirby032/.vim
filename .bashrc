@@ -130,6 +130,7 @@ HISTFILESIZE=8000
 PATH="/opt/qumulo/toolchain/bin:${PATH}"
 PATH=$PATH:/home/mkirby/src/tools
 PATH=$PATH:/home/mkirby/tools
+PATH=$PATH:/home/mkirby/my_tools
 
 stty ixany
 stty ixoff -ixon
@@ -144,10 +145,10 @@ alias qc='simnode/qc'
 alias lscore='find build/tmp -regex .*core.*'
 alias rmcore='rm -i build/tmp/cluster/node*/core*'
 alias qc_internal='simnode/qq_internal'
-alias tn='prototypes/triageninja'
-alias tn_steps="prototypes/triageninja --steps run_python 'print(\"{} {:<12} {} {}\".format(f.url(), f.build.name, f.started, f.display_name))'"
+alias tn='triage/triageninja'
+alias tn_steps="triage/triageninja --steps run_python 'print(\"{} {:<12} {} {}\".format(f.url(), f.build.name, f.started, f.display_name))'"
 alias tn_step=tn_steps
-alias tn_tests="prototypes/triageninja run_python 'print(\"{} {:<12} {} {}\".format(f.url(), f.step.build.name, f.started, f.output.split(\"/\")[-1]))'"
+alias tn_tests="triage/triageninja run_python 'print(\"{} {:<12} {} {}\".format(f.url(), f.step.build.name, f.started, f.output.split(\"/\")[-1]))'"
 alias tn_test=tn_tests
 alias qq_internal='api/client/qq_internal'
 alias enzo='source /home/mkirby/src/tools/qston/enzo/enzo.bash'
@@ -163,6 +164,9 @@ alias grep='grep --color=always'
 # Create an alarm for event
 alias create-alarm='~/my_tools/set-alarm.sh'
 alias show-alarms='ps aux | grep set-alarm | grep -v grep | tr -s " " | cut -d " " -f 13-'
+
+# sudo with qumulo environment
+alias qsudo='sudo env PATH="/opt/qumulo/toolchain/bin:${PATH}"'
 
 # Enable vi mode instead of emacs
 set -o vi
