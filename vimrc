@@ -27,6 +27,7 @@ match ErrorMsg '\s\+$'
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set cino=(0,W4
 nnoremap <leader>t <Esc>:set expandtab!<cr>
 "Move up and down faster"
 nnoremap <leader>j 50j
