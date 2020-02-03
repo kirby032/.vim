@@ -153,6 +153,8 @@ alias tn_test=tn_tests
 alias qq_internal='api/client/qq_internal'
 alias enzo='source /home/mkirby/src/tools/qston/enzo/enzo.bash'
 
+alias work-with-rachel='setxkbmap -option caps:ctrl_modifier; xmodmap /home/mkirby/dotfiles/xmodmap.das-keyboard'
+
 # Always output core files
 ulimit -c unlimited
 
