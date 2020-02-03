@@ -151,6 +151,9 @@ nnoremap <leader>d mA:%bd<cr><C-W>v<C-W>v'A
 " Open recent build failures
 nnoremap <leader>q :cfile build/log<cr>
 
+" Reload all windows"
+nnoremap <leader>r :windo e!<cr>
+
 "Autogroups
 
 augroup code_file_types
@@ -161,6 +164,11 @@ augroup code_file_types
     autocmd FileType qf set nospell
 augroup END
 
+augroup type_script_is_js
+    autocmd!
+    autocmd BufNewFile,BufRead *.ts   set filetype=javascript
+augroup END
+
 augroup txt_file_types
     autocmd!
     autocmd FileType text set spell spelllang=en_us
@@ -169,6 +177,11 @@ augroup END
 augroup resize_split_on_win_resize
     autocmd!
     autocmd VimResized * wincmd =
+augroup END
+
+augroup tsx_is_javascript
+    autocmd!
+    autocmd BufNewFile,BufRead *.tsx set filetype=javascript
 augroup END
 
 
