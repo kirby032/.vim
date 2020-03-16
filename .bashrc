@@ -170,5 +170,13 @@ alias show-alarms='ps aux | grep set-alarm | grep -v grep | tr -s " " | cut -d "
 # sudo with qumulo environment
 alias qsudo='sudo env PATH="/opt/qumulo/toolchain/bin:${PATH}"'
 
+# Start/Stop Vast VPN
+alias vpn='nmcli con'
+alias vpn-start='nmcli con up MiTAC.vpn.121719'
+alias vpn-stop='nmcli con down MiTAC.vpn.121719'
+
+# SSH azure dev vm
+alias ssh-azvm='ssh centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com'
+
 # Enable vi mode instead of emacs
 set -o vi
