@@ -8,6 +8,9 @@
     - Change files under /home/{user} to new uid, gid
         chown -R 2322:2000 /home/{user}
 - Ensure username is as expected (mkirby)
+- Install tmux
+    sudo apt install tmux
+    sudo apt install xclip
 - Install chrome
 - Install vim
     sudo apt-get install vim-gtk
