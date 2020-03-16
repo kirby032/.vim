@@ -10,6 +10,7 @@
 
 [core]
     editor = vim
+	excludesfile = ~/.gitignore
 
 [alias]
     cam = commit --amend
@@ -23,6 +24,23 @@
     reflogbranch = log -g --abbrev-commit --pretty=oneline
     rl = reflog --pretty=reflog
 
+    # From Ilan
+    amend = commit --amend -C HEAD
+    propose = !git push -u origin +HEAD:MR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    buildpropose = !git push -u origin +HEAD:BUILD/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    drpropose = !git push -u origin +HEAD:DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    smbpropose = !git push -u origin +HEAD:SMB/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    teamsmbpropose = !git push -u origin +HEAD:SMB/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    raidpropose = !git push -u origin +HEAD:RAID/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    datapropose = !git push -u origin +HEAD:DATA/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    regpropose = !git push -u origin +HEAD:REG/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    regdrpropose = !git push -u origin +HEAD:REG/DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    unpropose = !git push origin +:$USER/MR/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    protopropose = !git push -u origin +HEAD:PROTO/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    regsmbpropose = !git push -u origin +HEAD:REG/SMB/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    regnfspropose = !git push -u origin +HEAD:REG/NFS/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+
+    # From Dev Getting Started on wiki
     probuild = !git push -u origin +HEAD:BUILD/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
     prodr = !git push -u origin +HEAD:DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
     procontrol = !git push -u origin +HEAD:CONTROL/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
