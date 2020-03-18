@@ -170,6 +170,13 @@ alias show-alarms='ps aux | grep set-alarm | grep -v grep | tr -s " " | cut -d "
 # sudo with qumulo environment
 alias qsudo='sudo env PATH="/opt/qumulo/toolchain/bin:${PATH}"'
 
+
+# __     ___    ____ _____   ____        _
+# \ \   / / \  / ___|_   _| |  _ \  __ _| |_ __ _
+#  \ \ / / _ \ \___ \ | |   | | | |/ _` | __/ _` |
+#   \ V / ___ \ ___) || |   | |_| | (_| | || (_| |
+#    \_/_/   \_\____/ |_|   |____/ \__,_|\__\__,_|
+#  FIGLET: VAST Data
 # Start/Stop Vast VPN
 alias vpn='nmcli con'
 alias vpn-start='nmcli con up MiTAC.vpn.121719'
@@ -177,6 +184,29 @@ alias vpn-stop='nmcli con down MiTAC.vpn.121719'
 
 # SSH azure dev vm
 alias ssh-azvm='ssh centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com'
+
+# rsync source code to azure vm
+alias rsync-src='rsync -avzr .git centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com:/home/centos/orion/;  rsync -avzr -0 --files-from=<(git ls-files -z) . centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com:/home/centos/orion/'
+
+# __  __         ____  _          __  __
+#|  \/  |_   _  / ___|| |_ _   _ / _|/ _|
+#| |\/| | | | | \___ \| __| | | | |_| |_
+#| |  | | |_| |  ___) | |_| |_| |  _|  _|
+#|_|  |_|\__, | |____/ \__|\__,_|_| |_|
+#        |___/
+# FIGLET: My Stuff
+# Daily routine aliases
+alias start-day='mkdir -p /home/mkirby/daily-notes/$(date +%Y)/$(date +%B)/; touch /home/mkirby/daily-notes/$(date +%Y)/$(date +%B)/$(date +%d).notes'
+alias end-day='GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes git add $(date +%Y)/$(date +%B)/$(date +%d).notes; GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes git commit -m "Notes for $(date +%m/%d/%Y)" -e'
+
+# 'Alias' (really a function) for ps aux and grep for specific program
+pss() {
+    ps aux | grep -ie $@ | sed "1i $(ps -aux | head -n1)"
+}
+
+pss-mem() {
+    pss $@ | sed '1d' | awk -v proc=$@ '{rss += $6; virtual += $5} END {printf proc " is using %.2f GB Virtual, %.2f GB Real\n", virtual / 1024 / 1024, rss / 1024 / 1024}'
+}
 
 # Enable vi mode instead of emacs
 set -o vi
