@@ -10,7 +10,7 @@
 
 [core]
     editor = vim
-	excludesfile = ~/.gitignore
+    excludesfile = /home/mkirby/.gitignore
 
 [alias]
     cam = commit --amend
