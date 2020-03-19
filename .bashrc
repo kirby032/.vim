@@ -196,8 +196,27 @@ alias rsync-src='rsync -avzr .git centos@rnd-mkirby-vastdata.eastus2.cloudapp.az
 #        |___/
 # FIGLET: My Stuff
 # Daily routine aliases
-alias start-day='mkdir -p /home/mkirby/daily-notes/$(date +%Y)/$(date +%B)/; touch /home/mkirby/daily-notes/$(date +%Y)/$(date +%B)/$(date +%d).notes'
-alias end-day='GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes git add $(date +%Y)/$(date +%B)/$(date +%d).notes; GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes git commit -m "Notes for $(date +%m/%d/%Y)" -e'
+start-day() {
+    mkdir -p /home/mkirby/daily-notes/$(date +%Y)/$(date +%B)/
+    touch /home/mkirby/daily-notes/$(date +%Y)/$(date +%B)/$(date +%d).notes
+}
+
+add-note() {
+    echo '-' $@ >> /home/mkirby/daily-notes/$(date +%Y)/$(date +%B)/$(date +%d).notes
+}
+
+end-day() {
+    GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes \
+        git add $(date +%Y)/$(date +%B)/$(date +%d).notes
+
+    GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes \
+        git commit -m "Notes for $(date +%m/%d/%Y)" -e
+}
+
+#test-shit() {
+#    echo some stuff \
+#        and some more
+#}
 
 # 'Alias' (really a function) for ps aux and grep for specific program
 pss() {
