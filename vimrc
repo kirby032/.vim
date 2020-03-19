@@ -35,7 +35,7 @@ nnoremap <leader>k 50k
 "Use mouse controls
 set mouse=a
 "Set column width marker
-set colorcolumn=80
+set colorcolumn=120
 "Enable a vim title
 set title
 "Dont be compatible with vi
@@ -59,8 +59,8 @@ vnoremap / y<esc>/<C-R>"
 set wrapscan
 
 "For git and mercurial commits auto-wrap line at 72 chars"
-au FileType gitcommit set tw=80
-au FileType hgcommit set tw=80
+au FileType gitcommit set tw=120
+au FileType hgcommit set tw=120
 
 
 "
@@ -184,6 +184,11 @@ augroup tsx_is_javascript
     autocmd BufNewFile,BufRead *.tsx set filetype=javascript
 augroup END
 
+augroup scons_is_python
+    autocmd!
+    autocmd BufNewFile,BufRead SConstruct set filetype=python
+augroup END
+
 
 "
 " Pathogen (plugin manager) settings
@@ -279,6 +284,15 @@ function! s:RunShellCommand(cmdline)
   1
 endfunction
 
+function! DNotes()
+    let year = system('date +%Y')[:-2]
+    let month =  system('date +%B')[:-2]
+    let day = system('date +%d')[:-2]
+    let open_path = "/home/mkirby/daily-notes/" . year . "/" . month . "/" . day . ".notes"
+    execute "e " . open_path
+endfunction
+nnoremap <leader>q <Esc>:call DNotes()<cr>
+
 command! -complete=shellcmd -nargs=+ ShellSync call s:RunShellCommand(<q-args>)
 command! -complete=shellcmd -nargs=+ Shell :AsyncRun <args>
 command! -complete=file -nargs=* Hg :AsyncRun hg <args>
@@ -348,24 +362,3 @@ hi def link qASSERTS Statement
 " backups are a little silly when you're using patches constantly
 set nobackup
 set noswapfile
-
-
-"  ___                        _
-" / _ \ _   _ _ __ ___  _   _| | ___
-"| | | | | | | '_ ` _ \| | | | |/ _ \
-"| |_| | |_| | | | | | | |_| | | (_) |
-" \__\_\\__,_|_| |_| |_|\__,_|_|\___/
-"                             _                 _
-" _ __ ___   __ _ _ __  _ __ (_)_ __   __ _ ___( )
-"| '_ ` _ \ / _` | '_ \| '_ \| | '_ \ / _` / __|/
-"| | | | | | (_| | |_) | |_) | | | | | (_| \__ \
-"|_| |_| |_|\__,_| .__/| .__/|_|_| |_|\__, |___/
-"                |_|   |_|            |___/
-" FIGLET: Qumulo mappings'
-"
-
-"Set F5 to run tests in the directory of the file in the current buffer
-nnoremap <F5> :AsyncRun ./check_run.py -b '%:.:h'<cr>
-
-
-" Qumulo Style end
