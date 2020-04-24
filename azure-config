@@ -1,0 +1,10 @@
+[cloud]
+name = AzureCloud
+
+[defaults]
+group = vastdata-rnd
+vm = rnd-mkirby
+
+[core]
+first_run = yes
+

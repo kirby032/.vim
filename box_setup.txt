@@ -23,16 +23,34 @@
 - Install vimrc
     cd ~/
     git clone --recursive https://github.com/kirby032/.vim.git
+- Install Azure CLID
+    - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest
+
 - Install dotfiles
     cd ~/
     git clone --recursive git@github.com:kirby032/dotfiles.git
 - Link dotfiles as appropriate
     mv ~/.bashrc ~/.bashrc.orig
     ln -s /home/mkirby/dotfiles/.bashrc /home/mkirby/.bashrc
+
     mv ~/.tmux.conf ~/.tmux.conf.orig
     ln -s /home/mkirby/dotfiles/.tmux.conf /home/mkirby/.tmux.conf
+
     mv ~/.qumulorc ~/.qumulorc.orig
     ln -s /home/mkirby/dotfiles/.qumulorc /home/mkirby/.qumulorc
+
+    rm ~/.gitconfig
+    ln -s /home/mkirby/dotfiles/gitconfig /home/mkirby/.gitconfig
+
+    rm ~/.gitignore
+    ln -s /home/mkirby/dotfiles/gitignore /home/mkirby/.gitignore
+
+    mv ~/.azure/config ~/.azure/config.orig
+    ln -s /home/mkirby/dotfiles/azure-config /home/mkirby/.azure/config
+
+    mv ~/.ssh/config ~/.ssh/config.orig
+    ln -s /home/mkirby/dotfiles/ssh-config /home/mkirby/.ssh/config
+
 - Start ssh-agent automatically on login:
     - Copy old /usr/share/upstart/sessions/ssh-agent.conf
 - Maybe switch alt and super key (if super opens activities pane you're fine)

@@ -1,0 +1,8 @@
+Host azure-vm
+    HostName rnd-mkirby-vastdata.eastus2.cloudapp.azure.com
+    User centos
+
+Host kfs
+    HostName dbg-kfs.vstd.int
+    User vastdata
+    IdentityFile /home/mkirby/orion/deploy/ssh_key.pem
