@@ -4,6 +4,7 @@
 
 [diff]
     tool = meld
+    context = 10
 
 [merge]
     tool = meld
@@ -24,42 +25,47 @@
     reflogbranch = log -g --abbrev-commit --pretty=oneline
     rl = reflog --pretty=reflog
 
+    toolspropose = !git push -u vast +HEAD:$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+
     # From Ilan
     amend = commit --amend -C HEAD
-    propose = !git push -u origin +HEAD:MR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    buildpropose = !git push -u origin +HEAD:BUILD/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    drpropose = !git push -u origin +HEAD:DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    smbpropose = !git push -u origin +HEAD:SMB/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    teamsmbpropose = !git push -u origin +HEAD:SMB/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    raidpropose = !git push -u origin +HEAD:RAID/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    datapropose = !git push -u origin +HEAD:DATA/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    regpropose = !git push -u origin +HEAD:REG/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    regdrpropose = !git push -u origin +HEAD:REG/DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    unpropose = !git push origin +:$USER/MR/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    protopropose = !git push -u origin +HEAD:PROTO/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    regsmbpropose = !git push -u origin +HEAD:REG/SMB/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    regnfspropose = !git push -u origin +HEAD:REG/NFS/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    propose = !git push -u orion +HEAD:MR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    buildpropose = !git push -u orion +HEAD:BUILD/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    drpropose = !git push -u orion +HEAD:DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    smbpropose = !git push -u orion +HEAD:SMB/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    teamsmbpropose = !git push -u orion +HEAD:SMB/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    raidpropose = !git push -u orion +HEAD:RAID/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    datapropose = !git push -u orion +HEAD:DATA/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    regpropose = !git push -u orion +HEAD:REG/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    regdrpropose = !git push -u orion +HEAD:REG/DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    unpropose = !git push orion +:$USER/MR/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    protopropose = !git push -u orion +HEAD:PROTO/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    regsmbpropose = !git push -u orion +HEAD:REG/SMB/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    regnfspropose = !git push -u orion +HEAD:REG/NFS/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
 
     # From Dev Getting Started on wiki
-    probuild = !git push -u origin +HEAD:BUILD/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    prodr = !git push -u origin +HEAD:DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    procontrol = !git push -u origin +HEAD:CONTROL/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    prodata = !git push -u origin +HEAD:DATA/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    prosnap = !git push -u origin +HEAD:SNAP/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    prounit = !git push -u origin +HEAD:UNITTEST/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    proupgrade = !git push -u origin +HEAD:UPGRADE/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    proregsnap = !git push -u origin +HEAD:REG/SNAP/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    proregraid = !git push -u origin +HEAD:REG/RAID/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    proregdr = !git push -u origin +HEAD:REG/DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    proregestore = !git push -u origin +HEAD:REG/ESTORE/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    promr = !git push -u origin +HEAD:MR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    promgmt = !git push -u origin +HEAD:MGMT/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    probuild = !git push -u orion +HEAD:BUILD/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    prodr = !git push -u orion +HEAD:DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    procontrol = !git push -u orion +HEAD:CONTROL/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    prodata = !git push -u orion +HEAD:DATA/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    prosnap = !git push -u orion +HEAD:SNAP/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    prounit = !git push -u orion +HEAD:UNITTEST/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    proupgrade = !git push -u orion +HEAD:UPGRADE/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    proregsnap = !git push -u orion +HEAD:REG/SNAP/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    proregraid = !git push -u orion +HEAD:REG/RAID/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    proregdr = !git push -u orion +HEAD:REG/DR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    proregestore = !git push -u orion +HEAD:REG/ESTORE/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    promr = !git push -u orion +HEAD:MR/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
+    promgmt = !git push -u orion +HEAD:MGMT/$USER/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
 
     pipe = "!f() { : git log ; echo `scripts/pipe2hash.sh $1`; }; f"
     pipelg = "!f() { : git log ; git lg `scripts/pipe2hash.sh $1`; }; f"
 
     cr = "!f() { git fetch; git difftool -d origin/${1}~${2:-1}..origin/${1}; }; f"
     base = "!f() { : git branch ; git branch -q -D base ; git branch base `git rev-list --min-parents=2 --max-count=1 HEAD`; }; f"
+
+    # My aliases
+    diffhead = !git diff HEAD~..HEAD
 
 [help]
     autocorrect = 1
