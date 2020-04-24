@@ -154,6 +154,17 @@ nnoremap <leader>q :cfile build/log<cr>
 " Reload all windows"
 nnoremap <leader>r :windo e!<cr>
 
+" __     ___    ____ _____
+" \ \   / / \  / ___|_   _|
+"  \ \ / / _ \ \___ \ | |
+"   \ V / ___ \ ___) || |
+"    \_/_/   \_\____/ |_|
+"  FIGLET: VAST
+" Rsync to Azure dev-vm and build
+nnoremap <f5> :Shell /home/mkirby/my_tools/vast-build-helpers/sync-and-build-on-azure<cr>
+
+
+
 "Autogroups
 
 augroup code_file_types
