@@ -127,7 +127,7 @@ fi
 HISTSIZE=4000
 HISTFILESIZE=8000
 
-PATH="/opt/qumulo/toolchain/bin:${PATH}"
+PATH=$PATH:/home/mkirby/.local/bin
 PATH=$PATH:/home/mkirby/src/tools
 PATH=$PATH:/home/mkirby/tools
 PATH=$PATH:/home/mkirby/my_tools
@@ -184,10 +184,19 @@ alias vpn-stop='nmcli con down MiTAC.vpn.121719'
 
 # SSH azure dev vm
 alias ssh-azvm='ssh centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com'
+alias ui-azvm='ssh -i ~/.ssh/id_rsa -N -g -C -o "StrictHostKeyChecking no" -L 8443:localhost:443 centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com'
 
 # rsync source code to azure vm
-alias rsync-src='rsync -avzr .git centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com:/home/centos/orion/;  rsync -avzr -0 --files-from=<(git ls-files -z) . centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com:/home/centos/orion/'
-
+#alias rsync-src='rsync -avzr .git centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com:/home/centos/orion/;  rsync -avzr -0 --files-from=<(git ls-files -z) . centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com:/home/centos/orion/'
+#
+rsync-src() {
+    if [ "$PWD" = "/home/mkirby/orion" ]; then
+        rsync -avzr /home/mkirby/orion/.git centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com:/home/centos/orion/
+        rsync -avzr -0 --files-from=<(git ls-files -z) . centos@rnd-mkirby-vastdata.eastus2.cloudapp.azure.com:/home/centos/orion/
+    else
+        echo "Must be in /home/mkirby/orion but currently at $PWD"
+    fi
+}
 # __  __         ____  _          __  __
 #|  \/  |_   _  / ___|| |_ _   _ / _|/ _|
 #| |\/| | | | | \___ \| __| | | | |_| |_
@@ -207,10 +216,32 @@ add-note() {
 
 end-day() {
     GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes \
-        git add $(date +%Y)/$(date +%B)/$(date +%d).notes
+        git add $(date +%Y)
 
     GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes \
         git commit -m "Notes for $(date +%m/%d/%Y)" -e
+
+    GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes \
+        git fetch kirby032
+
+    GIT_DIR=/home/mkirby/daily-notes/.git GIT_WORK_TREE=/home/mkirby/daily-notes \
+        git push
+}
+
+amount-worked() {
+    day_of_week=$(date +%u)
+    year=$(date +%Y)
+
+    for ((i = 1; i <= day_of_week && i <= 5; ++i )); do
+        day_modifier=$(($day_of_week - $i))
+        month=$(date -d "-$day_modifier days" +%B)
+        day=$(date -d "-$day_modifier days" +%d)
+        day_name=$(date -d "-$day_modifier days" +%A)
+
+        echo $day_name
+        #echo /home/mkirby/daily-notes/$year/$month/$day.notes
+        ag 'started:|stopped:' /home/mkirby/daily-notes/$year/$month/$day.notes
+    done
 }
 
 #test-shit() {
@@ -226,6 +257,8 @@ pss() {
 pss-mem() {
     pss $@ | sed '1d' | awk -v proc=$@ '{rss += $6; virtual += $5} END {printf proc " is using %.2f GB Virtual, %.2f GB Real\n", virtual / 1024 / 1024, rss / 1024 / 1024}'
 }
+
+alias ctags='ctags --c-kinds=+p'
 
 # Enable vi mode instead of emacs
 set -o vi
