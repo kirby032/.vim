@@ -313,7 +313,7 @@ pss-mem() {
     pss $@ | sed '1d' | awk -v proc=$@ '{rss += $6; virtual += $5} END {printf proc " is using %.2f GB Virtual, %.2f GB Real\n", virtual / 1024 / 1024, rss / 1024 / 1024}'
 }
 
-alias ctags='ctags --c-kinds=+p'
+alias ctags='ctags --c-kinds=+p --map-c++=+.vproto'
 
 # Enable vi mode instead of emacs
 set -o vi
