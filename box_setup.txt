@@ -23,6 +23,9 @@
 - Install vimrc
     cd ~/
     git clone --recursive https://github.com/kirby032/.vim.git
+- Install universal_ctags
+- Create ctags for /usr/include
+    pushd /usr/include; sudo ctags -R -f .tags; popd;
 - Install Azure CLID
     - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest
 
@@ -50,6 +53,10 @@
 
     mv ~/.ssh/config ~/.ssh/config.orig
     ln -s /home/mkirby/dotfiles/ssh-config /home/mkirby/.ssh/config
+
+- Install my_tools
+    cd ~/
+    git clone --recursive git@github.com:kirby032/my_tools.git
 
 - Start ssh-agent automatically on login:
     - Copy old /usr/share/upstart/sessions/ssh-agent.conf
