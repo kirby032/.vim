@@ -232,6 +232,8 @@ amount-worked() {
     day_of_week=$(date +%u)
     year=$(date +%Y)
 
+    total_time_worked=0
+
     for ((i = 1; i <= day_of_week && i <= 5; ++i )); do
         day_modifier=$(($day_of_week - $i))
         month=$(date -d "-$day_modifier days" +%B)
@@ -239,9 +241,28 @@ amount-worked() {
         day_name=$(date -d "-$day_modifier days" +%A)
 
         echo $day_name
-        #echo /home/mkirby/daily-notes/$year/$month/$day.notes
-        ag 'started:|stopped:' /home/mkirby/daily-notes/$year/$month/$day.notes
+        started=$(head -n1 /home/mkirby/daily-notes/$year/$month/$day.notes | ag 'started:' | awk '{print $2}')
+        started=$(date -d $started +%s)
+
+        stopped=$(tail -n1 /home/mkirby/daily-notes/$year/$month/$day.notes | ag 'stopped:' | cut -d ' ' -f2 | sed 's/,$//')
+        stopped=$(date -d $stopped +%s)
+
+        breaks=$(tail -n1 /home/mkirby/daily-notes/$year/$month/$day.notes | ag 'breaks: [0-9]+min' | awk '{print $4}' | cut -d 'm' -f1)
+
+        diffsec=$(expr "$stopped" - "$started")
+        if [ $breaks ]; then
+            diffsec=$(expr "$diffsec" - 60 \* "$breaks")
+        fi
+        total_time_worked=$(expr "$total_time_worked" + "$diffsec")
+        total_worked=$(date +%H:%M:%S -ud @$diffsec)
+        ag --nonumbers --nocolor 'started:|stopped:' /home/mkirby/daily-notes/$year/$month/$day.notes
+        echo Worked total of $total_worked
+        echo
     done
+
+    total_worked=$(expr "$total_time_worked" / 60 / 60)
+    mins_worked=$(date +%M -ud @$total_time_worked)
+    echo Worked $total_worked:$mins_worked so far this week
 }
 
 #test-shit() {
