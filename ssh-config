@@ -2,7 +2,21 @@ Host azure-vm
     HostName rnd-mkirby-vastdata.eastus2.cloudapp.azure.com
     User centos
 
+Host root-azure-vm
+    HostName rnd-mkirby-vastdata.eastus2.cloudapp.azure.com
+    User root
+
 Host kfs
     HostName dbg-kfs.vstd.int
+    User vastdata
+    IdentityFile /home/mkirby/orion/deploy/ssh_key.pem
+
+Host cal
+    HostName dbg-cal.vstd.int
+    User vastdata
+    IdentityFile /home/mkirby/orion/deploy/ssh_key.pem
+
+Host tlv
+    HostName dbg-tlv.vstd.int
     User vastdata
     IdentityFile /home/mkirby/orion/deploy/ssh_key.pem
