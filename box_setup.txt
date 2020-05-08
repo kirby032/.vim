@@ -53,10 +53,14 @@
 
 - Start ssh-agent automatically on login:
     - Copy old /usr/share/upstart/sessions/ssh-agent.conf
+
 - Maybe switch alt and super key (if super opens activities pane you're fine)
     - Backup default mappings
         xmodmap -pke > xmodmap.defaults
     - Put following config for Apple DasKeyboard in ~/.Xmodmap
+
+- Copy crontab
+    cat ~/dotfiles/crontab | crontab
 ~~~
 keycode 64 = Super_L
 keycode 133 = Alt_L
