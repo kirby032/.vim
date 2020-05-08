@@ -59,7 +59,7 @@
     git clone --recursive git@github.com:kirby032/my_tools.git
 
 - Start ssh-agent automatically on login:
-    - Copy old /usr/share/upstart/sessions/ssh-agent.conf
+    cp ssh-agent.conf /usr/share/upstart/sessions/
 
 - Maybe switch alt and super key (if super opens activities pane you're fine)
     - Backup default mappings
