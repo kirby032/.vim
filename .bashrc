@@ -265,6 +265,40 @@ amount-worked() {
     echo Worked $total_worked:$mins_worked so far this week
 }
 
+save-git-stack() {
+    if [ "$#" -ne 2 ]; then
+        echo "Entered:" $@
+        echo "Usage: save-git-stack {base_reference} {target_patchstack_dir}"
+        echo "Example:"
+        echo "    save-git-stack orion/TEAM/smb /jupiter/mkirby/my_new_stack"
+        return
+    fi
+
+    ref=$1
+    stack_dir=$2
+
+
+    # Create $stack_dir if it doesn't exist
+    mkdir -p $stack_dir
+
+    # Create series file and move existing to .old
+    if [[ -f "$stack_dir/series" ]]; then
+        echo "$stack_dir/series" already exists, moving to "$stack_dir/series.old"
+        mv "$stack_dir/series" "$stack_dir/series.old"
+    fi
+
+    git log "$ref"..HEAD -v --stat > "$stack_dir/series"
+
+    patches=$(cat "$stack_dir/series" | grep '^commit' | awk '{print $2;}')
+
+    echo Copying $(echo $patches | wc -w) patches....
+
+    for patch in $patches; do
+        echo Diffing "$patch" to "$stack_dir"/"$patch"
+        git diff "$ref"~..HEAD > "$stack_dir/$patch"
+    done
+}
+
 #test-shit() {
 #    echo some stuff \
 #        and some more
