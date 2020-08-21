@@ -21,6 +21,7 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
+# start-day
 0 0 * * 1-5 mkdir -p /home/mkirby/daily-notes/$(date +\%Y)/$(date +\%B) && touch /home/mkirby/daily-notes/$(date +\%Y)/$(date +\%B)/$(date +\%d).notes
 # end-day
 0 23 * * 1-5 cd /home/mkirby/daily-notes && git add $(date +\%Y) && git commit -m "Notes for $(date +\%m/\%d/\%Y)" && git pull && git push
