@@ -19,6 +19,9 @@ syntax on
 set t_Co=256
 "set tags file to .tags
 set tags=tags,.tags;/
+" Add tags inside of /usr/include
+set tags+=/usr/include/**/.tags
+set tags+=/usr/lib/python*/.tags
 "show whitespaces
 set listchars=tab:>-,trail:.
 set list
