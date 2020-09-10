@@ -1,7 +1,7 @@
 Host mkirbybox
     HostName mkirbybox.eng.qumulo.com
     User mkirby
+    ForwardX11 yes
+    ForwardX11Trusted yes
 
 ForwardAgent yes
-ForwardX11 yes
-ForwardX11Trusted yes
