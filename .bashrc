@@ -132,8 +132,11 @@ PATH=$PATH:/home/mkirby/src/tools
 PATH=$PATH:/home/mkirby/tools
 PATH=$PATH:/home/mkirby/my_tools
 
-stty ixany
-stty ixoff -ixon
+PATH=/opt/qumulo/toolchain/bin:$PATH
+
+stty -ixon
+#stty ixany
+#stty ixoff -ixon
 
 # Use unicode style diff
 alias diff='diff -u'
