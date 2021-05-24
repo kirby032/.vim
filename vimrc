@@ -38,7 +38,7 @@ nnoremap <leader>k 50k
 "Use mouse controls
 set mouse=a
 "Set column width marker
-set colorcolumn=120
+set colorcolumn=80,88,120
 "Enable a vim title
 set title
 "Dont be compatible with vi
@@ -62,8 +62,8 @@ vnoremap / y<esc>/<C-R>"
 set wrapscan
 
 "For git and mercurial commits auto-wrap line at 72 chars"
-au FileType gitcommit set tw=120
-au FileType hgcommit set tw=120
+au FileType gitcommit set tw=72
+au FileType hgcommit set tw=72
 
 
 "
