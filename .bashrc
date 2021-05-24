@@ -319,3 +319,5 @@ pss-mem() {
 
 # Enable vi mode instead of emacs
 set -o vi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
