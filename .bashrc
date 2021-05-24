@@ -149,6 +149,7 @@ alias lscore='find build/tmp -regex .*core.*'
 alias rmcore='rm -i build/tmp/cluster/node*/core*'
 alias qc_internal='simnode/qq_internal'
 alias tn='triage/triageninja'
+alias tn_stat="tn run 'echo \$URL : \$BUILD : \$(rg \"FIXTURE SETUP STARTING\" test_output)'"
 alias tn_steps="triage/triageninja --steps run_python 'print(\"{} {:<12} {} {}\".format(f.url(), f.build.name, f.started, f.display_name))'"
 alias tn_step=tn_steps
 alias tn_tests="triage/triageninja run_python 'print(\"{} {:<12} {} {}\".format(f.url(), f.step.build.name, f.started, f.output.split(\"/\")[-1]))'"
@@ -315,8 +316,6 @@ pss() {
 pss-mem() {
     pss $@ | sed '1d' | awk -v proc=$@ '{rss += $6; virtual += $5} END {printf proc " is using %.2f GB Virtual, %.2f GB Real\n", virtual / 1024 / 1024, rss / 1024 / 1024}'
 }
-
-alias ctags='ctags --c-kinds=+p --map-c++=+.vproto'
 
 # Enable vi mode instead of emacs
 set -o vi
