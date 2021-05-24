@@ -211,45 +211,10 @@ Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 "
-"Ctrl-P plugin settings
-"
-let g:ctrlp_max_files = 0
-let g:ctrlp_use_caching = 1
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_extensions = ['tag']
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-noremap <silent> <C-z> :CtrlPTag<cr>
-
-"
-"YCM disable compilation
-"
-let g:ycm_largfile=1
-
-"
 " Ripgrep remember last search and last path
 "
-let g:ag_working_path_mode="r"
 nnoremap <leader>f <Esc>:Rg 
 vnoremap <leader>f y<Esc>:Rg <C-R>"
-
-"                                                                __ _
-"  __ _ ___ _   _ _ __   ___ _ __ _   _ _ __     ___ ___  _ __  / _(_) __ _
-" / _` / __| | | | '_ \ / __| '__| | | | '_ \   / __/ _ \| '_ \| |_| |/ _` |
-"| (_| \__ \ |_| | | | | (__| |  | |_| | | | | | (_| (_) | | | |  _| | (_| |
-" \__,_|___/\__, |_| |_|\___|_|   \__,_|_| |_|  \___\___/|_| |_|_| |_|\__, |
-"           |___/                                                     |___/
-" FIGLET: asyncrun config
-"
-let g:asyncrun_bell=1
-
-
-"
-"bClose script settings
-"
-let bclose_multiple = 1
-
 
 "
 " FUNCTIONS
