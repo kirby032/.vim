@@ -207,14 +207,24 @@ augroup END
 " vim-plug settings (https://github.com/junegunn/vim-plug)
 "
 call plug#begin('~/.vim/plugged')
-Plug 'jremmen/vim-ripgrep'
+
+" Use ack.vim for quick search + ripgrep underneath the covers
+Plug 'mileszs/ack.vim'
+let g:ackprg = 'rg --vimgrep -S'
+nnoremap gn :cn<cr>
+nnoremap gp :cp<cr>
+
+" Enable fzf inside of vim
+Plug '~/.fzf'
+nnoremap <leader>o :FZF<cr>
+
 call plug#end()
 
 "
 " Ripgrep remember last search and last path
 "
-nnoremap <leader>f <Esc>:Rg 
-vnoremap <leader>f y<Esc>:Rg <C-R>"
+nnoremap <leader>f <Esc>:Ack! 
+vnoremap <leader>f y<Esc>:Ack! <C-R>"
 
 "
 " FUNCTIONS
