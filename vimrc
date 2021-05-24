@@ -207,6 +207,7 @@ augroup END
 " vim-plug settings (https://github.com/junegunn/vim-plug)
 "
 call plug#begin('~/.vim/plugged')
+Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 "
@@ -227,25 +228,11 @@ noremap <silent> <C-z> :CtrlPTag<cr>
 let g:ycm_largfile=1
 
 "
-"Silver-searcher (Ag) plugin settings
+" Ripgrep remember last search and last path
 "
 let g:ag_working_path_mode="r"
-nnoremap <leader>f <Esc>:", "<C-R>P")<C-B>call Project_search("<C-R>Q
-vnoremap <leader>f y<Esc>:")<C-B>call Project_search("<C-R>"", "<C-R>P
-
-"
-"vim-airline (tab and buffer viewer) settings
-"
-let g:airline_theme = 'dark'
-let g:airline#extensions#tabline#fnamemod = ":t"
-let g:airline_section_c = '%<%Fm %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
-let g:airline#extensions#tabline#enabled = 1
-
-"
-"vim-minimap settings
-"
-let g:minimap_highlight='Visual'
-
+nnoremap <leader>f <Esc>:Rg 
+vnoremap <leader>f y<Esc>:Rg <C-R>"
 
 "                                                                __ _
 "  __ _ ___ _   _ _ __   ___ _ __ _   _ _ __     ___ ___  _ __  / _(_) __ _
@@ -267,13 +254,6 @@ let bclose_multiple = 1
 "
 " FUNCTIONS
 "
-
-function! Project_search(pattern, path)
-    echom "path: " a:path " pattern: " a:pattern
-    let @p = a:path
-    let @q = a:pattern
-    call ag#Ag('grep','-S ' . a:pattern . ' ' . a:path)
-endfunction
 
 "
 " Shell commands open buffered window
