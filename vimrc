@@ -204,6 +204,12 @@ augroup scons_is_python
 augroup END
 
 "
+" vim-plug settings (https://github.com/junegunn/vim-plug)
+"
+call plug#begin('~/.vim/plugged')
+call plug#end()
+
+"
 "Ctrl-P plugin settings
 "
 let g:ctrlp_max_files = 0
