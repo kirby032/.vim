@@ -320,4 +320,8 @@ pss-mem() {
 # Enable vi mode instead of emacs
 set -o vi
 
+# Use fzf for terminal fuzzy finder
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_ALT_C_COMMAND="rg --files --hidden -g !build/* -g !.hg/*"
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g !build/* -g !.hg/*'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
