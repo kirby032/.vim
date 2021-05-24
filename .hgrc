@@ -36,6 +36,7 @@ q = qseries -s -v
 qstat = qdiff --stat
 push = qpush --merge --no-edit --no-backup
 diffhead = diff -c tip
+stauts = status
 
 [committemplate]
 # A slightly more compact commit message template that also
