@@ -255,28 +255,6 @@ let bclose_multiple = 1
 " FUNCTIONS
 "
 
-"
-" Shell commands open buffered window
-"
-function! s:RunShellCommand(cmdline)
-  echo a:cmdline
-  let expanded_cmdline = a:cmdline
-  for part in split(a:cmdline, ' ')
-     if part[0] =~ '\v[%#<]'
-        let expanded_part = fnameescape(expand(part))
-        let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
-     endif
-  endfor
-  botright 10new
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-  call setline(1, 'You entered:    ' . a:cmdline)
-  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
-  call setline(3,substitute(getline(2),'.','=','g'))
-  silent execute '$read !'. expanded_cmdline
-  setlocal nomodifiable
-  1
-endfunction
-
 function! DNotes()
     let year = system('date +%Y')[:-2]
     let month =  system('date +%B')[:-2]
@@ -285,15 +263,6 @@ function! DNotes()
     execute "e " . open_path
 endfunction
 nnoremap <leader>q <Esc>:call DNotes()<cr>
-
-command! -complete=shellcmd -nargs=+ ShellSync call s:RunShellCommand(<q-args>)
-command! -complete=shellcmd -nargs=+ Shell :AsyncRun <args>
-command! -complete=file -nargs=* Hg :AsyncRun hg <args>
-command! -complete=file -nargs=* Gulp :AsyncRun gulp  <args>
-command! -complete=file -nargs=* Build :AsyncRun build <args>
-command! -complete=file -nargs=* CR :AsyncRun ./check_run.py <args>
-command! -complete=file -nargs=* Lint :AsyncRun lint/all <args>
-
 
 "
 " QUMULO Specific stuff
