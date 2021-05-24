@@ -203,13 +203,6 @@ augroup scons_is_python
     autocmd BufNewFile,BufRead SConstruct set filetype=python
 augroup END
 
-
-"
-" Pathogen (plugin manager) settings
-"
-filetype plugin indent on
-call pathogen#infect()
-
 "
 "Ctrl-P plugin settings
 "
