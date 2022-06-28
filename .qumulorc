@@ -1,7 +1,4 @@
 {
-    "build_default_options": {
-        "nfs_cache": true
-    },
     "build_progress":"only-bar",
     "build_log_file":"build/log"
 }

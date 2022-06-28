@@ -133,6 +133,7 @@ PATH=$PATH:/home/mkirby/tools
 PATH=$PATH:/home/mkirby/my_tools
 
 PATH=/opt/qumulo/toolchain/bin:$PATH
+PATH=$PATH:/usr/local/go/bin:/home/mkirby/go/bin
 
 stty -ixon
 #stty ixany
@@ -156,6 +157,7 @@ alias tn_tests="triage/triageninja run_python 'print(\"{} {:<12} {} {}\".format(
 alias tn_test=tn_tests
 alias qq_internal='api/client/qq_internal'
 alias enzo='source /home/mkirby/src/tools/qston/enzo/enzo.bash'
+alias kubectl="minikube kubectl --"
 
 alias work-with-rachel='setxkbmap -option caps:ctrl_modifier; xmodmap /home/mkirby/dotfiles/xmodmap.das-keyboard'
 
@@ -201,6 +203,9 @@ rsync-src() {
         echo "Must be in /home/mkirby/orion but currently at $PWD"
     fi
 }
+
+set bell-style none
+
 # __  __         ____  _          __  __
 #|  \/  |_   _  / ___|| |_ _   _ / _|/ _|
 #| |\/| | | | | \___ \| __| | | | |_| |_
@@ -325,3 +330,6 @@ set -o vi
 export FZF_ALT_C_COMMAND="rg --files --hidden -g !build/* -g !.hg/* -g !.qpkg/*"
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g !build/* -g !.hg/* -g !.qpkg/*'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Make docker/minikube not bitch about locale error:
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
