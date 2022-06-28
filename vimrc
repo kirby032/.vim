@@ -38,7 +38,7 @@ nnoremap <leader>k 50k
 "Use mouse controls
 set mouse=a
 "Set column width marker
-set colorcolumn=80,88,120
+set colorcolumn=100
 "Enable a vim title
 set title
 "Dont be compatible with vi
@@ -58,6 +58,7 @@ set t_BE=
 
 "Default to searching for highlighted word
 vnoremap / y<esc>/<C-R>"
+vnoremap ? y<esc>?<C-R>"
 "Allow search to wrap bottom of the file
 set wrapscan
 
@@ -151,11 +152,14 @@ vnoremap <leader>r <Esc>:<Up><cr>
 "Close all other buffers
 nnoremap <leader>d mA:%bd<cr><C-W>v<C-W>v'A
 
-" Open recent build failures
-nnoremap <leader>q :cfile build/log<cr>
-
 " Reload all windows"
 nnoremap <leader>r :windo e!<cr>
+
+" Go to end column marker
+nnoremap <leader><Bar> 100<Bar>
+
+" Parse rust errors with cfile
+set errorformat+=%E%>error[E%n]:\ %m,%C\ %#-->\ %f:%l:%c
 
 " __     ___    ____ _____
 " \ \   / / \  / ___|_   _|
@@ -217,6 +221,9 @@ nnoremap gp :cp<cr>
 " Enable fzf inside of vim
 Plug '~/.fzf'
 nnoremap <leader>o :FZF<cr>
+
+" Rust plugin
+"Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
