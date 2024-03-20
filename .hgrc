@@ -85,3 +85,8 @@ changeset = {desc}\n\n
 # the tradeoffs before setting this: your merge experience will be
 # worse and coworkers that qload your patches may complain.
 #unified = 10
+
+[color]
+qseries.applied = blue bold underline
+qseries.unapplied = white
+qseries.missing = red bold

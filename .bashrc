@@ -158,6 +158,7 @@ alias tn_test=tn_tests
 alias qq_internal='api/client/qq_internal'
 alias enzo='source /home/mkirby/src/tools/qston/enzo/enzo.bash'
 alias kubectl="minikube kubectl --"
+alias pull-tags="wget --quiet --output-document /home/mkirby/src/tags http://gravyweb.eng.qumulo.com/build/latest/src/TAGS"
 
 alias work-with-rachel='setxkbmap -option caps:ctrl_modifier; xmodmap /home/mkirby/dotfiles/xmodmap.das-keyboard'
 
@@ -333,3 +334,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Make docker/minikube not bitch about locale error:
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
