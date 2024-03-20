@@ -62,6 +62,9 @@ vnoremap ? y<esc>?<C-R>"
 "Allow search to wrap bottom of the file
 set wrapscan
 
+"Fill spaces to the end of the line (100 chars)
+nnoremap f<space> 100A<space><Esc>d100<bar>
+
 "For git and mercurial commits auto-wrap line at 72 chars"
 au FileType gitcommit set tw=72
 au FileType hgcommit set tw=72
@@ -219,11 +222,22 @@ nnoremap gn :cn<cr>
 nnoremap gp :cp<cr>
 
 " Enable fzf inside of vim
-Plug '~/.fzf'
+" Plug '~/.fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 nnoremap <leader>o :FZF<cr>
 
 " Rust plugin
 "Plug 'rust-lang/rust.vim'
+
+Plug 'github/copilot.vim'
+" https://github.com/orgs/community/discussions/16800
+" https://linuxize.com/post/how-to-install-node-js-on-ubuntu-22-04/
+"let g:copilot_node_command = "~/.nvm/versions/node/v20.1.0/bin/node"
+
+" clang-format on the fly
+Plug 'rhysd/vim-clang-format'
+nnoremap <leader>z :ClangFormat<cr>
+vnoremap <leader>z :ClangFormat<cr>
 
 call plug#end()
 

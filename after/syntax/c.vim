@@ -1,0 +1,1 @@
+/home/mkirby/src/tools/editors/vim/after/syntax/c.vim
